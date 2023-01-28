@@ -19,10 +19,12 @@ class CardComponent extends Component {
     super.render();
 
     this.domElement.innerHTML = `
-      <img class="card__image" src="${this.image}"/>
+      <img class="card__image" src="${this.image}" alt="${this.name} width="200"/>
       <span class="card__title">${this.name}</span>
-      <span class="card__id">${this.id}</span>
-      <img class="card__type" src="public/img/${this.type}.png">
+      <div class="card__footer">
+        <span class="card__id">#${this.id}</span>
+        <img class="card__type" src="${this.type}.png" alt="${this.type} icon"/>
+      </div>
     `;
   }
 }
