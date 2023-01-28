@@ -1,6 +1,6 @@
 import Component from "../Component/Component.js";
 
-export class HeaderComponent extends Component {
+class HeaderComponent extends Component {
   constructor(parentElement: Element) {
     super(parentElement, "header", "header");
   }
@@ -414,3 +414,5 @@ export class HeaderComponent extends Component {
     `;
   }
 }
+
+export default HeaderComponent;
