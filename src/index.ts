@@ -1,5 +1,5 @@
 import PageComponent from "./components/PageComponent/PageComponent.js";
-import { HeaderComponent } from "./components/HeaderComponent/HeaderComponent.js";
+import HeaderComponent from "./components/HeaderComponent/HeaderComponent.js";
 import getPokemonById from "./ts/getPokemonById.js";
 import CardComponent from "./components/CardComponent/CardComponent.js";
 import { type PokeInfoStructure } from "./ts/types.js";
