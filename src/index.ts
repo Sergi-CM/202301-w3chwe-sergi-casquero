@@ -12,10 +12,10 @@ header.render();
 const page = new PageComponent(rootContainer);
 page.render();
 
-const prueba = async () => {
+const generateCard = async () => {
   const pokemon: PokeInfoStructure = await getPokemonById(5);
   const card = new CardComponent(page.domElement, pokemon);
   card.render();
 };
 
-await prueba();
+await generateCard();
