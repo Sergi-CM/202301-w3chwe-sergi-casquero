@@ -5,3 +5,5 @@ class CardListComponent extends Component {
     super(parentElement, "card-list", "ul");
   }
 }
+
+export default CardListComponent;

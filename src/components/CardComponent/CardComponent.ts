@@ -8,7 +8,7 @@ class CardComponent extends Component {
   type: string;
 
   constructor(parentElement: Element, pokemon: PokeInfoStructure) {
-    super(parentElement, "card", "article");
+    super(parentElement, "card", "li");
     this.id = pokemon.id;
     this.name = pokemon.name[0].toLocaleUpperCase() + pokemon.name.slice(1);
     this.type = pokemon.types[0].type.name;
