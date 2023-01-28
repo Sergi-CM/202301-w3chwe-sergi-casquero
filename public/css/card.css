@@ -1,0 +1,43 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  position: relative;
+  height: 350px;
+  width: 270px;
+  padding: 20px;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  border-color: rgb(45, 56, 153);
+  box-shadow: 0px 0px 10px 0px rgba(45, 56, 153, 0.2);
+}
+
+.card__image {
+  max-width: 230px;
+  max-height: 260px;
+}
+
+.card__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.card__footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.card__type {
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  width: 60px;
+}
