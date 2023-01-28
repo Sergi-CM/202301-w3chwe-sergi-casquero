@@ -23,7 +23,7 @@ class CardComponent extends Component {
       <span class="card__title">${this.name}</span>
       <div class="card__footer">
         <span class="card__id">#${this.id}</span>
-        <img class="card__type" src="${this.type}.png" alt="${this.type} icon"/>
+        <img class="card__type" src="img/${this.type}.png" alt="${this.type} icon"/>
       </div>
     `;
   }
