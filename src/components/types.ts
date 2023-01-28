@@ -1,5 +1,6 @@
 interface ComponentStructure {
-  domElement: HTMLElement;
+  domElement: Element;
+  parentElement: Element;
   render: () => void;
   addListeners?: () => void;
 }
