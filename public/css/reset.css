@@ -10,3 +10,8 @@ body {
   min-height: 100vh;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+ul {
+  margin: 0;
+  text-decoration: none;
+}
