@@ -8,7 +8,10 @@ import getPokemonList from "./ts/getPokemonList.js";
 import ButtonComponent from "./components/ButtonComponent/ButtonComponent.js";
 import SearchBarComponent from "./components/SearchBarComponent/SearchBarComponent.js";
 
-const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
+const firstPokeIndex = 0;
+const lastPokeIndex = 50;
+const baseApiUrl = `https://pokeapi.co/api/v2/pokemon/`;
+const listApiUrl = `https://pokeapi.co/api/v2/pokemon/?offset=${firstPokeIndex}&limit=${lastPokeIndex}`;
 
 const rootContainer: HTMLElement = document.querySelector(".root")!;
 
@@ -32,15 +35,18 @@ const favouritesButton = new ButtonComponent(
 favouritesButton.render();
 
 const generateCardList = async () => {
-  const initialListFromApi: PokemonListStructure = await getPokemonList(apiUrl);
+  const initialListFromApi: PokemonListStructure = await getPokemonList(
+    listApiUrl
+  );
   const initialPokeList = initialListFromApi.results;
-
   initialPokeList.map(async (pokemon, id) => {
-    const pokemonInfo: PokeInfoStructure = await getPokemonById(apiUrl, id + 1);
+    const pokemonInfo: PokeInfoStructure = await getPokemonById(
+      baseApiUrl,
+      id + 1
+    );
     const card = new CardComponent(cardList.domElement, pokemonInfo);
     card.render();
   });
-  console.log(initialPokeList);
 };
 
 await generateCardList();
