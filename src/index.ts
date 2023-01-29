@@ -6,6 +6,7 @@ import CardListComponent from "./components/CardListComponent/CardListComponent.
 import getPokemonById from "./ts/getPokemonById.js";
 import getPokemonList from "./ts/getPokemonList.js";
 import ButtonComponent from "./components/ButtonComponent/ButtonComponent.js";
+import SearchBarComponent from "./components/SearchBarComponent/SearchBarComponent.js";
 
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -19,6 +20,9 @@ main.render();
 
 const cardList = new CardListComponent(main.domElement);
 cardList.render();
+
+const searchBar = new SearchBarComponent(header.domElement);
+searchBar.render();
 
 const favouritesButton = new ButtonComponent(
   header.domElement,
