@@ -5,6 +5,7 @@ import type { PokemonListStructure, PokeInfoStructure } from "./ts/types.js";
 import CardListComponent from "./components/CardListComponent/CardListComponent.js";
 import getPokemonById from "./ts/getPokemonById.js";
 import getPokemonList from "./ts/getPokemonList.js";
+import ButtonComponent from "./components/ButtonComponent/ButtonComponent.js";
 
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -19,18 +20,20 @@ main.render();
 const cardList = new CardListComponent(main.domElement);
 cardList.render();
 
+const favouritesButton = new ButtonComponent(
+  header.domElement,
+  "favourites-button",
+  "My Favourites"
+);
+favouritesButton.render();
+
 const generateCard = async () => {
   const pokemonListFromApi: PokemonListStructure = await getPokemonList(apiUrl);
-  const pokemonCardList = pokemonListFromApi.results.map(
-    async (pokemon, id) => {
-      const pokemonInfo: PokeInfoStructure = await getPokemonById(
-        apiUrl,
-        id + 1
-      );
-      const card = new CardComponent(cardList.domElement, pokemonInfo);
-      card.render();
-    }
-  );
+  pokemonListFromApi.results.map(async (pokemon, id) => {
+    const pokemonInfo: PokeInfoStructure = await getPokemonById(apiUrl, id + 1);
+    const card = new CardComponent(cardList.domElement, pokemonInfo);
+    card.render();
+  });
 };
 
 await generateCard();
