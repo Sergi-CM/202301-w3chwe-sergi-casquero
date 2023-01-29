@@ -20,12 +20,14 @@ const cardList = new CardListComponent(main.domElement);
 cardList.render();
 
 const generateCard = async () => {
-  const pokemonList: PokemonListStructure = await getPokemonList(apiUrl);
-  pokemonList.results.forEach(async (pokemon, id) => {
-    const pokemonInfo: PokeInfoStructure = await getPokemonById(apiUrl, id);
-    const card = new CardComponent(cardList.domElement, pokemonInfo);
-    card.render();
-  });
+  const pokemonListFromApi: PokemonListStructure = await getPokemonList(apiUrl);
+  const pokemonCardList = pokemonListFromApi.results.map(
+    async (pokemon, id) => {
+      const pokemonInfo: PokeInfoStructure = await getPokemonById(apiUrl, id);
+      const card = new CardComponent(cardList.domElement, pokemonInfo);
+      card.render();
+    }
+  );
 };
 
 await generateCard();
