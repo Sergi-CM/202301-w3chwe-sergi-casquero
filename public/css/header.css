@@ -1,8 +1,19 @@
+@import url("./all.min.css");
+
 .header {
-  padding: 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0px;
+  padding-right: 40px;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
 .header__logo {
-  height: 80px;
+  height: 70px;
+}
+
+.fa-user {
+  font-size: 2rem;
+  color: rgb(48, 48, 48);
 }

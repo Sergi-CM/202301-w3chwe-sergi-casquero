@@ -23,7 +23,10 @@ const generateCard = async () => {
   const pokemonListFromApi: PokemonListStructure = await getPokemonList(apiUrl);
   const pokemonCardList = pokemonListFromApi.results.map(
     async (pokemon, id) => {
-      const pokemonInfo: PokeInfoStructure = await getPokemonById(apiUrl, id);
+      const pokemonInfo: PokeInfoStructure = await getPokemonById(
+        apiUrl,
+        id + 1
+      );
       const card = new CardComponent(cardList.domElement, pokemonInfo);
       card.render();
     }
