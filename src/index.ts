@@ -8,10 +8,11 @@ import getPokemonList from "./ts/getPokemonList.js";
 import ButtonComponent from "./components/ButtonComponent/ButtonComponent.js";
 import SearchBarComponent from "./components/SearchBarComponent/SearchBarComponent.js";
 
-const firstPokeIndex = 0;
-const lastPokeIndex = 50;
+let listPage = 1;
+let firstPokeIndex = 0;
+let lastPokeIndex = 50;
 const baseApiUrl = `https://pokeapi.co/api/v2/pokemon/`;
-const listApiUrl = `https://pokeapi.co/api/v2/pokemon/?offset=${firstPokeIndex}&limit=${lastPokeIndex}`;
+let listApiUrl = `https://pokeapi.co/api/v2/pokemon/?offset=${firstPokeIndex}&limit=${lastPokeIndex}`;
 
 const rootContainer: HTMLElement = document.querySelector(".root")!;
 
@@ -23,6 +24,20 @@ main.render();
 
 const cardList = new CardListComponent(main.domElement);
 cardList.render();
+
+const prevPageButton = new ButtonComponent(
+  cardList.domElement.querySelector(".page-buttons-container"),
+  "page-button prev-page",
+  "◄"
+);
+prevPageButton.render();
+
+const nextPageButton = new ButtonComponent(
+  cardList.domElement.querySelector(".page-buttons-container"),
+  "page-button next-page",
+  "►"
+);
+nextPageButton.render();
 
 const searchBar = new SearchBarComponent(header.domElement);
 searchBar.render();
@@ -50,3 +65,18 @@ const generateCardList = async () => {
 };
 
 await generateCardList();
+
+const nextButton = cardList.domElement.querySelector(".next-page");
+
+nextButton.addEventListener("click", async () => {
+  if (listPage === 5) {
+    return;
+  }
+
+  listPage++;
+  firstPokeIndex += 51;
+  lastPokeIndex += 51;
+  listApiUrl = `https://pokeapi.co/api/v2/pokemon/?offset=${firstPokeIndex}&limit=${lastPokeIndex}`;
+  await getPokemonList(listApiUrl);
+  await generateCardList();
+});
