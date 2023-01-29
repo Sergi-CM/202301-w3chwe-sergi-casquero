@@ -31,13 +31,16 @@ const favouritesButton = new ButtonComponent(
 );
 favouritesButton.render();
 
-const generateCard = async () => {
-  const pokemonListFromApi: PokemonListStructure = await getPokemonList(apiUrl);
-  pokemonListFromApi.results.map(async (pokemon, id) => {
+const generateCardList = async () => {
+  const initialListFromApi: PokemonListStructure = await getPokemonList(apiUrl);
+  const initialPokeList = initialListFromApi.results;
+
+  initialPokeList.map(async (pokemon, id) => {
     const pokemonInfo: PokeInfoStructure = await getPokemonById(apiUrl, id + 1);
     const card = new CardComponent(cardList.domElement, pokemonInfo);
     card.render();
   });
+  console.log(initialPokeList);
 };
 
-await generateCard();
+await generateCardList();
