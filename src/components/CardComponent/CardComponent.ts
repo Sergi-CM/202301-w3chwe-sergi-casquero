@@ -19,7 +19,7 @@ class CardComponent extends Component {
     super.render();
     this.domElement.classList.add(`type-${this.type}`);
     this.domElement.innerHTML = `
-      <img class="card__image" src="${this.image}" alt="${this.name} width="200"/>
+      <img class="card__image" src="${this.image}" alt="${this.name}" width="200"/>
       <span class="card__title">${this.name}</span>
       <div class="card__footer">
         <span class="card__id">#${this.id}</span>
