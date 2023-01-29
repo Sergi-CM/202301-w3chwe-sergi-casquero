@@ -25,7 +25,15 @@ class CardComponent extends Component {
         <span class="card__id">#${this.id}</span>
         <img class="card__type" src="img/${this.type}.png" alt="${this.type} icon"/>
       </div>
+      <div class="card__overlay">
+        <i class="fa-regular fa-heart"></i>
+      </div>
     `;
+    const addFavouriteButton = this.domElement.querySelector(".fa-heart");
+    addFavouriteButton.addEventListener("click", () => {
+      addFavouriteButton.classList.toggle("fa-regular");
+      addFavouriteButton.classList.toggle("fa-solid");
+    });
   }
 }
 
