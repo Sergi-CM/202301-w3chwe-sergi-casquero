@@ -1,0 +1,12 @@
+.page-buttons-container {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.page-button {
+  color: rgb(54, 72, 131);
+  font-size: 30px;
+  cursor: pointer;
+}
